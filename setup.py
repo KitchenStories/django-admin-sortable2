@@ -3,12 +3,13 @@
 from __future__ import unicode_literals
 from setuptools import setup, find_packages
 from adminsortable2 import __version__
+
 try:
     from pypandoc import convert
 except ImportError:
-    import io
+    import codecs
     def convert(filename, fmt):
-        with io.open(filename, encoding='utf-8') as fd:
+        with codecs.open(filename, 'r', 'utf-8') as fd:
             return fd.read()
 
 DESCRIPTION = 'Generic drag-and-drop sorting for the List, the Stacked- and the Tabular-Inlines Views in the Django Admin'
